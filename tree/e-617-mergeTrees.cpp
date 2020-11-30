@@ -13,16 +13,8 @@ public:
         if(t1 == nullptr)   return t2;
         if(t2 == nullptr)   return t1;
         t1->val += t2->val;
-        if(t1->left == nullptr && t2->left != nullptr){
-            t1->left = t2->left;
-        } else if(t1->left != nullptr && t2->left != nullptr){
-            mergeTrees(t1->left,t2->left);
-        }
-        if(t1->right == nullptr && t2->right != nullptr){
-            t1->right = t2->right;
-        } else if(t1->right != nullptr && t2->right != nullptr){
-            mergeTrees(t1->right,t2->right);
-        }
+        t1->left = mergeTrees(t1->left, t2->left);
+        t1->right = mergeTrees(t1->right, t2->right);
         return t1;
     } 
 };
